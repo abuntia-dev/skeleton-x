@@ -1,0 +1,19 @@
+version: '3.6'
+volumes:
+  server_main_public_folder:
+services:
+  server_main:
+    build:
+      context: server/main
+    env_file: .env.server.main
+    command: "start"
+    volumes:
+      - server_main_public_folder:/home/node/app/public
+
+  client_frontend:
+    build:
+      context: client/frontend
+    env_file: .env.client.frontend
+    command: "build"
+    volumes: 
+      - server_main_public_folder:/home/node/app/docker_public 
