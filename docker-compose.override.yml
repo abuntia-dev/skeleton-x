@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  client_frontend:
+    command: "build:watch -- --outputPath=/home/node/app/docker_public"
+    volumes:
+        - ./client/frontend:/home/node/app
+  server_main:
+    command: "start:dev"
+    volumes: 
+      - ./server/main:/home/node/app
+    ports: 
+      - 3000:3000
